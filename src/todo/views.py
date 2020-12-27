@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from .forms import TodoAddForm
 from .models import Todo
 
 
@@ -11,4 +13,12 @@ def todo_list(request):
     context = {
         'todos': todos
     }
-    return render (request, "todo/todo_list.html", context)
+    return render(request, "todo/todo_list.html", context)
+
+
+def todo_create(request):
+    form = TodoAddForm()
+    context = {
+        'form': form
+    }
+    return render(request, "todo/todo_create.html", context)

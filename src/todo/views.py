@@ -3,6 +3,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import TodoAddForm, TodoUpdateForm
 from .models import Todo
 
+def handler404(request, exception):
+    context = {}
+    response = render(request, "todo/404.html", context=context)
+    response.status_code = 404
+    return response
 
 def home(request):
     return render(request, "todo/home.html")
